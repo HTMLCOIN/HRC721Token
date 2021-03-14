@@ -2,7 +2,7 @@
 HRC721 Token Template
 
 # Introduction
-This project is an implementation of NFT (non-funhible token) based on [ERC721](https://eips.ethereum.org/EIPS/eip-721) and [OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-solidity). You can use it to issue your own NFTs and build corresponding DApps on **Htmlcoin**.
+This project is an implementation of NFT (non-fungible token) based on [ERC721](https://eips.ethereum.org/EIPS/eip-721) and [OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-solidity). You can use it to issue your own NFTs and build corresponding DApps on **Htmlcoin**.
 
 You can refer to [this article](https://medium.com/@qtumx/understanding-nft-non-fungible-token-3e5770e3288f
 ) for a detailed description of NFT and HRC721.
