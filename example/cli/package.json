@@ -20,6 +20,6 @@
   },
   "dependencies": {
     "arg": "2.0.0",
-    "htmlcoinjs": "1.7.3"
+    "htmlcoinjs": "1.9.3"
   }
 }
