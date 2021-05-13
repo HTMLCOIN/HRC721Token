@@ -19,7 +19,6 @@
     "url": "https://github.com/htmlcoin/HRC721Token/issues"
   },
   "dependencies": {
-    "arg": "2.0.0",
-    "htmlcoinjs": "1.9.3"
+    "arg": "2.0.0"
   }
 }
