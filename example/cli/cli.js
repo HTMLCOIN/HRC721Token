@@ -1,8 +1,8 @@
 const arg = require('arg');
-const {Htmlcoin} = require('htmlcoinjs');
+const { Htmlcoin } = require('htmlcoinjs');
 
 const args = arg({
-    '--htmlcoin_rpc':   String,
+    '--htmlcoin_rpc': String,
     '--solar_file': String,
 });
 
@@ -11,7 +11,7 @@ const htmlcoin = new Htmlcoin(args['--htmlcoin_rpc'], repo);
 const contract = htmlcoin.contract('contracts/HRC721.sol');
 
 async function getData() {
-    let res = {token: []};
+    let res = { token: [] };
 
     // get name
     data = await contract.call('name');
@@ -28,24 +28,24 @@ async function getData() {
 
     // get tokenId
     res['tokenId'] = []
-    for(let i = 0; i < index; i++){
-        data = await contract.call('tokenByIndex',[i]);
+    for (let i = 0; i < index; i++) {
+        data = await contract.call('tokenByIndex', [i]);
         res['tokenId'].push(data['outputs'][0].toNumber());
     }
 
     // get tokenOwner
     res['tokenOwner'] = []
-    for(let i = 0; i < index; i++){
+    for (let i = 0; i < index; i++) {
         temp = res['tokenId'][i];
-        data = await contract.call('ownerOf',[temp]);
+        data = await contract.call('ownerOf', [temp]);
         res['tokenOwner'].push(data['outputs'][0]);
     }
 
     // get tokenURI
     res['tokenURI'] = []
-    for(let i = 0;i < index; i++){
+    for (let i = 0; i < index; i++) {
         temp = res['tokenId'][i];
-        data = await contract.call('tokenURI',[temp]);
+        data = await contract.call('tokenURI', [temp]);
         res['tokenURI'].push(data['outputs'][0]);
     }
 
@@ -54,35 +54,35 @@ async function getData() {
 
 async function mint(to, tokenId) {
     const tx = await contract.send(
-        "mint", 
-        [to, tokenId], 
-        {senderAddress: contract['info']['sender']});
+        "mint",
+        [to, tokenId],
+        { senderAddress: contract['info']['sender'] });
 
     return tx;
 }
 
 async function mintWithTokenURI(to, tokenId, tokenURI) {
     const tx = await contract.send(
-        "mintWithTokenURI", 
-        [to, tokenId, tokenURI], 
-        {senderAddress: contract['info']['sender']});
+        "mintWithTokenURI",
+        [to, tokenId, tokenURI],
+        { senderAddress: contract['info']['sender'] });
 
     return tx;
 }
 
 switch (args['_'][0]) {
     case 'getinfo':
-        getData().then(function(data){
+        getData().then(function (data) {
             console.log(data);
         });
         break;
     case 'mint':
         if (args['_'].length == 3) {
-            mint(args['_'][1], args['_'][2]).then(function(data){
+            mint(args['_'][1], args['_'][2]).then(function (data) {
                 console.log(data);
             });
         } else {
-            mintWithTokenURI(args['_'][1], args['_'][2], args['_'][3]).then(function(data){
+            mintWithTokenURI(args['_'][1], args['_'][2], args['_'][3]).then(function (data) {
                 console.log(data);
             });
         }

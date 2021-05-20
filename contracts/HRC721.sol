@@ -6,6 +6,7 @@ import "../node_modules/openzeppelin-solidity/contracts/token/ERC721/extensions/
 import "./MinterRole.sol";
 
 contract HRC721 is ERC721URIStorage, MinterRole {
+
     constructor(string memory name, string memory symbol)
         public
         ERC721(name, symbol)

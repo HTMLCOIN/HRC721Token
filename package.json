@@ -19,6 +19,7 @@
     "url": "https://github.com/htmlcoin/HRC721Token/issues"
   },
   "dependencies": {
+    "@openzeppelin/upgrades": "^2.8.0",
     "htmlcoinjs": "^1.9.4",
     "openzeppelin-solidity": "^4.1.0"
   }
